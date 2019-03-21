@@ -2,6 +2,7 @@ package com.example.android_photo_editor_2k19;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,9 +12,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private Bitmap bitmap;
+    private Bitmap bOutput;
     private SeekBar seekBarBrightness;
     private SeekBar seekBarContrast;
+    private SeekBar seekBarSaturation;
+    private SeekBar seekBarRotation;
     private PictureThread thread;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+
             }
 
 
@@ -52,7 +58,49 @@ public class MainActivity extends AppCompatActivity {
         seekBarContrast.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                thread.adjustContrast(seekBar.getProgress()-100);
+                thread.adjustContrast(seekBar.getProgress()+10);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+        });
+
+        seekBarSaturation = (SeekBar) findViewById(R.id.seekBarSaturation);
+        seekBarSaturation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                thread.adjustSaturation(seekBar.getProgress()-255);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+
+
+        });
+
+        seekBarRotation = (SeekBar) findViewById(R.id.seekBarRotation);
+        seekBarRotation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                imageView.setImageBitmap(thread.rotateBitmap(seekBar.getProgress()));
 
             }
 
@@ -70,4 +118,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
