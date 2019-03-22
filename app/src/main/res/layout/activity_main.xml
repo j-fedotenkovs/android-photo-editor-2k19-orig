@@ -8,12 +8,11 @@
     tools:context=".MainActivity">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/imageView"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="4"
-        />
+        android:layout_weight="4" />
 
     <SeekBar
         android:id="@+id/seekBarBrightness"
@@ -42,5 +41,19 @@
         android:layout_height="wrap_content"
         android:max="360"
         android:progress="0" />
+
+    <Button
+        android:id="@+id/right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rotright"
+        tools:text="rotright" />
+
+    <Button
+        android:id="@+id/left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="rotleft"
+        tools:text="rotleft" />
 
 </LinearLayout>

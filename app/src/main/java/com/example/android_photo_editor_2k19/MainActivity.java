@@ -2,9 +2,10 @@ package com.example.android_photo_editor_2k19;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -18,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar seekBarSaturation;
     private SeekBar seekBarRotation;
     private PictureThread thread;
+    private Button bRight;
+    private Button bLeft;
+    static float deg;
+
+
+
 
 
     @Override
@@ -35,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         seekBarBrightness = (SeekBar) findViewById(R.id.seekBarBrightness);
         seekBarBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
                 thread.adjustBrightness(seekBar.getProgress()-255);
 
             }
@@ -100,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         seekBarRotation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                imageView.setImageBitmap(thread.rotateBitmap(seekBar.getProgress()));
+//                imageView.setImageBitmap(thread.rotateBitmap(seekBar.getProgress()));
 
             }
 
@@ -116,6 +123,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
+
+        bRight = (Button) findViewById(R.id.right);
+        bRight.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               thread.rotateBitmap(90);
+            }
+        });
+
+        bLeft = (Button) findViewById(R.id.left);
+        bLeft.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                thread.rotateBitmap(-90);
+            }
+        });
+
 
     }
 

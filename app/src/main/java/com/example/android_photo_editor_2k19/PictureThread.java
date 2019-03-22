@@ -38,6 +38,11 @@ public class PictureThread extends Thread {
     }
 
     public void adjustBrightness(float brightness){
+//        try {
+//            sleep(100);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         colorMatrixBr.set(new float[]{
                 1, 0, 0, 0, brightness,
                 0, 1, 0, 0, brightness,
@@ -94,10 +99,12 @@ public class PictureThread extends Thread {
 
     }
 
-    public Bitmap rotateBitmap(float degrees){
+    public void rotateBitmap(float degrees){
         matrix.setRotate(degrees);
-        temp_bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-        return temp_bitmap;
+        Bitmap rotBitmap = Bitmap.createBitmap(temp_bitmap, 0, 0, temp_bitmap.getWidth(), temp_bitmap.getHeight(), matrix, true);
+        canvas.drawBitmap(rotBitmap, 0, 0, paint);
+
+//        return temp_bitmap;
     }
 
 
