@@ -49,4 +49,11 @@
         android:text="rotleft"
         tools:text="rotleft" />
 
+    <Button
+        android:onClick="pick"
+        android:text="Pick"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
