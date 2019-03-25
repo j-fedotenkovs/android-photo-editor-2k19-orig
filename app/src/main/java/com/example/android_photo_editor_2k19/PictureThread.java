@@ -43,6 +43,7 @@ public class PictureThread extends Thread {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
+        brightness = brightness * 2.55f;
         colorMatrixBr.set(new float[]{
                 1, 0, 0, 0, brightness,
                 0, 1, 0, 0, brightness,

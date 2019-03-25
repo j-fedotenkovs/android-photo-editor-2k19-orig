@@ -13,18 +13,12 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private Bitmap bitmap;
-    private Bitmap bOutput;
     private SeekBar seekBarBrightness;
     private SeekBar seekBarContrast;
     private SeekBar seekBarSaturation;
-    private SeekBar seekBarRotation;
     private PictureThread thread;
     private Button bRight;
     private Button bLeft;
-    static float deg;
-
-
-
 
 
     @Override
@@ -43,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         seekBarBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-                thread.adjustBrightness(seekBar.getProgress()-255);
+                thread.adjustBrightness(seekBar.getProgress()-100);
 
             }
 
@@ -103,26 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        seekBarRotation = (SeekBar) findViewById(R.id.seekBarRotation);
-        seekBarRotation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                imageView.setImageBitmap(thread.rotateBitmap(seekBar.getProgress()));
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-
-
-        });
 
         bRight = (Button) findViewById(R.id.right);
         bRight.setOnClickListener(new View.OnClickListener() {

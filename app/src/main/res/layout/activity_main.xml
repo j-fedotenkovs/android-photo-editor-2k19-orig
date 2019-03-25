@@ -18,8 +18,8 @@
         android:id="@+id/seekBarBrightness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="510"
-        android:progress="255" />
+        android:max="200"
+        android:progress="100" />
 
     <SeekBar
         android:id="@+id/seekBarContrast"
@@ -34,13 +34,6 @@
         android:layout_height="wrap_content"
         android:max="510"
         android:progress="255" />
-
-    <SeekBar
-        android:id="@+id/seekBarRotation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="360"
-        android:progress="0" />
 
     <Button
         android:id="@+id/right"
