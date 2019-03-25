@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         seekBarContrast.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                thread.adjustContrast(seekBar.getProgress()+10);
+                thread.adjustContrast(seekBar.getProgress());
 
             }
 

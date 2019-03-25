@@ -60,14 +60,15 @@ public class PictureThread extends Thread {
     }
 
     public void adjustContrast(float contrast){
-//        float scale = contrast + 1.f;
-//        float translate = (-.5f * scale + .5f) * 255.f;
         contrast /= 10;
+        float scale = contrast + 1.f;
+        float translate = (-.5f * scale + .5f) * 255.f;
+
         colorMatrixCon.set(new float[]{
 
-                contrast, 0, 0, 0, 0,
-                0, contrast, 0, 0, 0,
-                0, 0, contrast, 0, 0,
+                scale, 0, 0, 0, translate,
+                0, scale, 0, 0, translate,
+                0, 0, scale, 0, translate,
                 0, 0, 0, 1, 0});
 
         colorMatrixConcat.setConcat(colorMatrixSat, colorMatrixBr);
